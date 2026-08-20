@@ -1,0 +1,48 @@
+{
+  "name": "tormoz-sinovi-uz",
+  "version": "1.4.1",
+  "description": "Vagon tormoz tizimlari bo‘yicha o‘zbek tilidagi interaktiv o‘quv-sinov dasturi",
+  "main": "electron/main.cjs",
+  "author": "G‘aniyev Farruxbek, Andijon vagon deposi",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis portable --x64",
+    "pack:win": "electron-builder --win dir --x64"
+  },
+  "devDependencies": {
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "uz.railway.tormozsinovi",
+    "productName": "Tormoz sinovi",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**/*",
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "artifactName": "Tormoz-sinovi-Setup-${version}-${arch}.${ext}",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Tormoz sinovi"
+    },
+    "portable": {
+      "artifactName": "Tormoz-sinovi-Portable-${version}-${arch}.${ext}"
+    }
+  }
+}

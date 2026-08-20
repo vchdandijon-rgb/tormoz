@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'"
+    />
+    <title>Tormoz sinovi</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="splash" id="splash" aria-hidden="true">
+      <div class="splash-mark" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <h1>Tormoz sinovi</h1>
+      <p>Vagon tormoz tizimlari</p>
+    </div>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <button class="brand" id="brandHome" type="button" aria-label="Bosh menyuga qaytish">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="18"></circle>
+              <circle cx="24" cy="24" r="7"></circle>
+              <path d="M24 6v7M24 35v7M6 24h7M35 24h7"></path>
+            </svg>
+          </span>
+          <span>
+            <strong>Tormoz sinovi</strong>
+            <small>Interaktiv o‘quv dasturi</small>
+          </span>
+        </button>
+
+        <nav class="top-actions" aria-label="Dastur boshqaruvi">
+          <button class="ghost-button about-button" id="aboutButton" type="button">
+            <span class="button-icon" aria-hidden="true">ⓘ</span>
+            Dastur haqida
+          </button>
+          <button class="ghost-button" id="homeButton" type="button">
+            <span class="button-icon" aria-hidden="true">⌂</span>
+            Bosh menyu
+          </button>
+          <button class="ghost-button" id="quizButton" type="button">
+            <span class="button-icon" aria-hidden="true">✓</span>
+            Bilimni sinash
+          </button>
+          <button class="icon-button" id="fullscreenButton" type="button" title="To‘liq ekran" aria-label="To‘liq ekran">
+            <span aria-hidden="true">⛶</span>
+          </button>
+          <button class="icon-button danger" id="quitButton" type="button" title="Chiqish" aria-label="Chiqish">
+            <span aria-hidden="true">×</span>
+          </button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="view home-view active" id="homeView">
+          <div class="hero">
+            <div class="hero-copy">
+              <p class="eyebrow">VAGON TORMOZ TIZIMLARI</p>
+              <h1>Tormozlarning ishlashini<br /><span>sxemada o‘rganing</span></h1>
+              <p class="hero-description">
+                Siqilgan havo yo‘nalishi, asosiy qismlar va tormoz jarayonlarini
+                bosqichma-bosqich ko‘rsatadigan zamonaviy o‘zbekcha dastur.
+              </p>
+              <div class="hero-metrics" aria-label="Dastur imkoniyatlari">
+                <div><strong>4</strong><span>tormoz sxemasi</span></div>
+                <div><strong>5</strong><span>ish holati</span></div>
+                <div><strong>12</strong><span>nazorat savoli</span></div>
+              </div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+              <div class="gauge-ring">
+                <div class="gauge-face">
+                  <span>kgk/sm²</span>
+                  <strong>5.0</strong>
+                </div>
+                <div class="gauge-needle"></div>
+              </div>
+              <div class="air-line air-line-one"></div>
+              <div class="air-line air-line-two"></div>
+              <span class="air-dot dot-one"></span>
+              <span class="air-dot dot-two"></span>
+              <span class="air-dot dot-three"></span>
+            </div>
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">SXEMANI TANLANG</p>
+              <h2>O‘rganiladigan tormoz turlari</h2>
+            </div>
+            <p>Har bir sxemada elementlar izohi va ish jarayonlari mavjud.</p>
+          </div>
+          <div class="scheme-grid" id="schemeGrid"></div>
+        </section>
+
+        <section class="view scheme-view" id="schemeView">
+          <div class="simulator-shell">
+            <div class="simulator-commandbar panel">
+              <div class="scheme-identity">
+                <button class="back-button" id="schemeBack" type="button" aria-label="Sxemalar ro‘yxatiga qaytish">←</button>
+                <div>
+                  <p class="eyebrow" id="schemeNumber">SXEMA 1</p>
+                  <h1 id="schemeTitle"></h1>
+                  <p id="schemeDescription"></p>
+                </div>
+              </div>
+
+              <div class="state-list" id="stateList" aria-label="Tormoz holatini tanlash"></div>
+
+              <button class="elements-toggle" id="elementsToggle" type="button">
+                <span aria-hidden="true">⌖</span>
+                <strong>Asosiy elementlar</strong>
+              </button>
+
+              <div class="pressure-cluster" aria-label="Jonli bosim ko‘rsatkichlari">
+                <div class="pressure-readout reservoir">
+                  <span>Bosh rezervuar</span>
+                  <div><strong id="reservoirPressure">0.0</strong><small>kgk/sm²</small></div>
+                  <i><b id="reservoirMeter"></b></i>
+                </div>
+                <div class="pressure-readout line">
+                  <span>Tormoz magistrali</span>
+                  <div><strong id="linePressure">0.0</strong><small>kgk/sm²</small></div>
+                  <i><b id="lineMeter"></b></i>
+                </div>
+                <div class="pressure-readout cylinder">
+                  <span>Tormoz silindri</span>
+                  <div><strong id="cylinderPressure">0.0</strong><small>kgk/sm²</small></div>
+                  <i><b id="cylinderMeter"></b></i>
+                </div>
+              </div>
+            </div>
+
+            <section class="diagram-panel panel">
+              <div class="diagram-toolbar">
+                <div class="current-state">
+                  <span class="status-indicator"></span>
+                  <strong id="stateTitle"></strong>
+                  <small id="stateSubtitle"></small>
+                </div>
+                <div class="legend">
+                  <span><i class="legend-blue"></i>Siqilgan havo</span>
+                  <span><i class="legend-red"></i>Tormoz bosimi</span>
+                  <span><i class="legend-amber"></i>Ushlab turish</span>
+                  <button class="replay-button" id="replayAnimation" type="button" title="Animatsiyani boshidan ko‘rish">↻ Qayta ijro</button>
+                </div>
+              </div>
+
+              <div class="diagram-workspace" id="diagramWorkspace">
+                <div class="diagram-stage" id="diagramStage">
+                  <div class="diagram-canvas" id="diagramCanvas">
+                    <img id="schemeImage" alt="Tormoz tizimi sxemasi" />
+                    <video class="scheme-animation" id="schemeAnimation" muted playsinline preload="metadata" hidden></video>
+                    <div class="animation-state-label" id="animationStateLabel" hidden></div>
+                    <div class="diagram-annotation-layer" id="diagramAnnotationLayer" aria-hidden="true"></div>
+                    <svg class="charge-flow-overlay" id="chargeFlowOverlay" viewBox="0 0 1100 676" preserveAspectRatio="none" aria-hidden="true"></svg>
+                    <svg class="brake-flow-overlay" id="brakeFlowOverlay" viewBox="0 0 1100 676" preserveAspectRatio="none" aria-hidden="true"></svg>
+                    <svg class="element-lines" id="elementLines" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"></svg>
+                    <div class="element-label-layer" id="elementLabelLayer"></div>
+                  </div>
+                </div>
+
+                <aside class="diagram-inspector" id="diagramInspector" aria-live="polite">
+                  <div class="inspector-heading">
+                    <span>TEXNIK IZOH</span>
+                    <strong>Jarayon va element vazifasi</strong>
+                  </div>
+                  <div class="process-explanation">
+                    <div class="process-icon" id="processIcon" aria-hidden="true">→</div>
+                    <div class="process-copy">
+                      <strong id="processHeading"></strong>
+                      <p id="processText"></p>
+                      <span class="next-state-note" id="nextStateNote" hidden></span>
+                    </div>
+                  </div>
+                  <div class="state-technical-note" id="stateTechnicalNote" hidden>
+                    <span>MUHIM TEXNIK JARAYON</span>
+                    <p id="stateTechnicalNoteText"></p>
+                  </div>
+                  <div class="component-detail" id="componentDetail" hidden></div>
+                  <span class="live-state"><i></i> BOSIM JONLI KO‘RSATILMOQDA</span>
+                </aside>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view quiz-view" id="quizView">
+          <div class="quiz-shell panel">
+            <div class="quiz-intro" id="quizIntro">
+              <p class="eyebrow">BILIMNI SINASH</p>
+              <h1>Vagon tormoz tizimlari bo‘yicha mini-test</h1>
+              <p>12 ta savol. Har bir javobdan keyin qisqa texnik izoh beriladi.</p>
+              <div class="quiz-feature-row">
+                <span>12 savol</span><span>1 ta to‘g‘ri javob</span><span>Natija saqlanadi</span>
+              </div>
+              <button class="primary-button" id="startQuiz" type="button">Testni boshlash →</button>
+            </div>
+
+            <div class="quiz-content" id="quizContent" hidden>
+              <div class="quiz-progress-row">
+                <span id="questionCounter"></span>
+                <div class="quiz-progress"><span id="quizProgressBar"></span></div>
+                <strong id="quizScore">0 ball</strong>
+              </div>
+              <p class="eyebrow" id="questionTopic"></p>
+              <h2 id="questionText"></h2>
+              <div class="answer-list" id="answerList"></div>
+              <div class="answer-explanation" id="answerExplanation" hidden></div>
+              <button class="primary-button next-question" id="nextQuestion" type="button" hidden>Keyingi savol →</button>
+            </div>
+
+            <div class="quiz-result" id="quizResult" hidden>
+              <div class="result-ring"><strong id="resultPercent">0%</strong></div>
+              <p class="eyebrow">TEST YAKUNLANDI</p>
+              <h2 id="resultTitle"></h2>
+              <p id="resultText"></p>
+              <div class="result-actions">
+                <button class="primary-button" id="retryQuiz" type="button">Qayta ishlash</button>
+                <button class="ghost-button" id="resultHome" type="button">Bosh menyu</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>Andijon vagon deposi · Yakuniy versiya 1.4.1</span>
+        <span>Dastur internet talab qilmaydi</span>
+      </footer>
+    </div>
+
+    <div class="about-modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" hidden>
+      <button class="about-backdrop" id="aboutBackdrop" type="button" aria-label="Dastur haqida oynasini yopish"></button>
+      <section class="about-card">
+        <button class="about-close" id="aboutClose" type="button" aria-label="Dastur haqida oynasini yopish">×</button>
+        <div class="about-brand-row">
+          <div class="about-mark" aria-hidden="true">i</div>
+          <div>
+            <p class="eyebrow">DASTUR HAQIDA</p>
+            <h2 id="aboutTitle">Tormoz sinovi</h2>
+          </div>
+        </div>
+
+        <p class="about-lead">
+          “Tormoz sinovi” — lokomotiv va vagonlarning pnevmatik hamda elektropnevmatik
+          tormoz tizimlari ishlashini interaktiv sxemalar orqali o‘rgatishga mo‘ljallangan
+          o‘zbek tilidagi o‘quv dasturi.
+        </p>
+
+        <div class="about-summary">
+          <h3>Dastur imkoniyatlari</h3>
+          <p>
+            Dasturda to‘rtta tormoz sxemasi, zaryadlash, poyezd holati, tormozlash,
+            perekrisha va bo‘shatish jarayonlari ko‘rsatiladi. Siqilgan havoning quvur
+            bo‘ylab harakati, jonli bosim qiymatlari, tormoz silindri va kolodkalarning
+            ishlashi, asosiy qurilmalar vazifasi hamda bilimni sinash bo‘limi mavjud.
+          </p>
+        </div>
+
+        <div class="about-feature-row" aria-label="Dastur tarkibi">
+          <span><strong>4</strong> interaktiv sxema</span>
+          <span><strong>5</strong> ish holati</span>
+          <span><strong>12</strong> test savoli</span>
+        </div>
+
+        <div class="about-author">
+          <span>DASTUR MUALLIFI</span>
+          <strong>G‘aniyev Farruxbek</strong>
+          <p>Andijon vagon deposi ishlab chiqarish-texnik bo‘limi boshlig‘i</p>
+          <small>Ushbu dastur G‘aniyev Farruxbek tomonidan yaratildi.</small>
+        </div>
+
+        <div class="about-footer">
+          <span>Yakuniy versiya 1.4.1</span>
+          <span>2026-yil</span>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
