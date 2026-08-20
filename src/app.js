@@ -1229,6 +1229,10 @@ async function windowAction(action) {
   if (action === "toggle-fullscreen") {
     if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
     else await document.exitFullscreen();
+    return;
+  }
+  if (action === "quit") {
+    showView("home");
   }
 }
 

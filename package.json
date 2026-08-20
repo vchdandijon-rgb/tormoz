@@ -1,6 +1,6 @@
 {
   "name": "tormoz-sinovi-uz",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Vagon tormoz tizimlari bo‘yicha o‘zbek tilidagi interaktiv o‘quv-sinov dasturi",
   "main": "electron/main.cjs",
   "author": "G‘aniyev Farruxbek, Andijon vagon deposi",
